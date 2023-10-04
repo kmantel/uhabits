@@ -38,6 +38,22 @@
             android:title="@string/pref_midnight_delay_title"
             app:iconSpaceReserved="false" />
 
+        <SeekBarPreference
+            android:defaultValue="0"
+            android:min="0"
+            android:max="23"
+            android:key="pref_midnight_delay_hour"
+            android:title="@string/pref_midnight_hour_title"
+            app:iconSpaceReserved="false" />
+
+        <SeekBarPreference
+            android:defaultValue="0"
+            android:min="0"
+            android:max="59"
+            android:key="pref_midnight_delay_minute"
+            android:title="@string/pref_midnight_minute_title"
+            app:iconSpaceReserved="false" />
+
         <SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="pref_skip_enabled"

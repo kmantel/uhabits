@@ -70,11 +70,7 @@ class HabitsApplication : Application() {
         val prefs = component.preferences
         prefs.lastAppVersion = BuildConfig.VERSION_CODE
 
-        if (prefs.isMidnightDelayEnabled) {
-            setStartDayOffset(3, 0)
-        } else {
-            setStartDayOffset(0, 0)
-        }
+        setStartDayOffset(prefs.midnightDelayHour, prefs.midnightDelayMinute)
 
         val habitList = component.habitList
         for (h in habitList) h.recompute()

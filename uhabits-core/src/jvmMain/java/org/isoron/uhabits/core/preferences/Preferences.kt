@@ -175,6 +175,18 @@ open class Preferences(private val storage: Storage) {
             for (l in listeners) l.onCheckmarkSequenceChanged()
         }
 
+    open var midnightDelayHour: Int
+        get() = storage.getInt("pref_midnight_delay_hour", 0)
+        set(hour) {
+            storage.putInt("pref_midnight_delay", hour)
+        }
+
+    open var midnightDelayMinute: Int
+        get() = storage.getInt("pref_midnight_delay_minute", 0)
+        set(minute) {
+            storage.putInt("pref_midnight_delay", minute)
+        }
+
     fun updateLastHint(number: Int, timestamp: Timestamp) {
         storage.putInt("last_hint_number", number)
         storage.putLong("last_hint_timestamp", timestamp.unixTime)
