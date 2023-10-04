@@ -40,6 +40,7 @@ import kotlinx.android.synthetic.main.activity_edit_habit.notesInput
 import kotlinx.android.synthetic.main.activity_edit_habit.questionInput
 import kotlinx.android.synthetic.main.activity_edit_habit.targetInput
 import kotlinx.android.synthetic.main.activity_edit_habit.unitInput
+import kotlinx.android.synthetic.main.activity_edit_habit.incrementInput
 import org.isoron.platform.gui.toInt
 import org.isoron.uhabits.HabitsApplication
 import org.isoron.uhabits.R

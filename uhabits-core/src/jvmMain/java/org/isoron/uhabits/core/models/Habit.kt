@@ -36,6 +36,7 @@ data class Habit(
     var type: HabitType = HabitType.YES_NO,
     var unit: String = "",
     var uuid: String? = null,
+    var increment: Int = 0,
     val computedEntries: EntryList,
     val originalEntries: EntryList,
     val scores: ScoreList,

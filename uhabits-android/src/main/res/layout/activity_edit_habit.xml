@@ -223,6 +223,22 @@
                 </LinearLayout>
             </FrameLayout>
 
+            <FrameLayout
+                android:id="@+id/incrementOuterBox"
+                style="@style/FormOuterBox">
+                <LinearLayout style="@style/FormInnerBox">
+                    <TextView
+                        style="@style/FormLabel"
+                        android:text="@string/increment" />
+                    <EditText
+                        style="@style/FormInput"
+                        android:id="@+id/incrementInput"
+                        android:maxLines="1"
+                        android:inputType="numberDecimal"
+                        android:text="1.0"
+                        />
+                </LinearLayout>
+            </FrameLayout>
 
             <!-- Reminder -->
             <FrameLayout style="@style/FormOuterBox">
