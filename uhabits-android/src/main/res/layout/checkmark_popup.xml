@@ -80,6 +80,11 @@
         app:divider="@drawable/checkmark_dialog_divider"
         app:showDividers="middle">
 
+        <TextView
+            android:id="@+id/minusBtn"
+            style="@style/NumericalPopupBtn"
+            android:text="@string/fa_minus" />
+
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/value"
             android:layout_width="0dp"
@@ -90,6 +95,11 @@
             android:inputType="numberDecimal"
             android:selectAllOnFocus="true"
             android:textSize="@dimen/smallTextSize" />
+
+        <TextView
+            android:id="@+id/plusBtn"
+            style="@style/NumericalPopupBtn"
+            android:text="@string/fa_plus" />
 
         <TextView
             android:id="@+id/skipBtnNumber"

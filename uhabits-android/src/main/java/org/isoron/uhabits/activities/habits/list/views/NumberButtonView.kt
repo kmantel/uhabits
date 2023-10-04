@@ -45,7 +45,7 @@ import javax.inject.Inject
 private val BOLD_TYPEFACE = Typeface.create("sans-serif-condensed", Typeface.BOLD)
 private val NORMAL_TYPEFACE = Typeface.create("sans-serif-condensed", Typeface.NORMAL)
 
-fun Double.toShortString(): String = when {
+fun Double.`toShortString`(): String = when {
     this >= 1e9 -> String.format("%.1fG", this / 1e9)
     this >= 1e8 -> String.format("%.0fM", this / 1e6)
     this >= 1e7 -> String.format("%.1fM", this / 1e6)
