@@ -30,11 +30,13 @@ import android.view.View.VISIBLE
 import org.isoron.uhabits.core.models.Entry
 import org.isoron.uhabits.core.preferences.Preferences
 import org.isoron.uhabits.databinding.CheckmarkPopupBinding
+import org.isoron.uhabits.utils.InterfaceUtils
 import org.isoron.uhabits.utils.dimBehind
 import org.isoron.uhabits.utils.dismissCurrentAndShow
 import org.isoron.uhabits.utils.dp
 import org.isoron.uhabits.utils.requestFocusWithKeyboard
 import java.text.DecimalFormat
+import kotlin.math.max
 
 class NumberPopup(
     private val context: Context,
@@ -46,6 +48,7 @@ class NumberPopup(
     var onToggle: (Double, String) -> Unit = { _, _ -> }
     var onDismiss: () -> Unit = {}
     private val originalValue = value
+//    private val currentValue = value
     private lateinit var dialog: Dialog
 
     private val view = CheckmarkPopupBinding.inflate(LayoutInflater.from(context)).apply {
@@ -55,9 +58,17 @@ class NumberPopup(
 
     init {
         view.numberButtons.visibility = VISIBLE
+        initTypefaces()
         hideDisabledButtons()
         populate()
     }
+
+    private fun initTypefaces() {
+        arrayOf(view.minusBtn, view.plusBtn).forEach {
+            it.typeface = InterfaceUtils.getFontAwesome(context)
+        }
+    }
+
 
     private fun hideDisabledButtons() {
         if (!prefs.isSkipEnabled) view.skipBtnNumber.visibility = GONE
@@ -100,6 +111,23 @@ class NumberPopup(
         view.skipBtnNumber.setOnClickListener {
             view.value.setText((Entry.SKIP.toDouble() / 1000).toString())
             save()
+        }
+        view.minusBtn.setOnClickListener {
+//            val value = view.value.toString().toDoubleOrNull() ?: 22.0
+//            val notes = view.notes.text.toString()
+            value = max(value - 1, 0.0)
+            view.value.setText( )
+//            onToggle(value, notes)
+        }
+        view.plusBtn.setOnClickListener {
+//            val value = view.value.toString().toDoubleOrNull() ?: 55.0
+//            val notes = view.notes.text.toString()
+            value += 1
+            view.value.setText(when {
+                value < 0.01 -> "0"
+                else -> DecimalFormat("#.##").format(value)
+            })
+//            onToggle(value, notes)
         }
         view.value.requestFocusWithKeyboard()
         dialog.setCanceledOnTouchOutside(true)
